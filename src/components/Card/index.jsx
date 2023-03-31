@@ -3,7 +3,7 @@ import styles from "./card.module.css";
 
 const Card = ({ producto }) => {
   return (
-    <Link to={`${producto.id}`}>
+    <Link to={`/productos/${producto.id}`}>
       <div className={styles.container}>
         <h3>{producto.title}</h3>
         <img

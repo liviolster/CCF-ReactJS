@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import styles from"./App.css";
+import "./App.css";
 import CardDetail from "./components/CardDetail";
 import Home from "./components/Home";
 import Ingresar from "./components/Ingresar";
@@ -33,12 +33,12 @@ function App() {
           path="/productos"
           element={<ProductList productos={productos} />}
         />
-        <Route path="/products/:id" element={<CardDetail />} />
+        <Route path="/productos/:id" element={<CardDetail />} />
         <Route path="/cart" element={<h3>Cart</h3>} />
         <Route path="/404" element={<h2>404 Not Found</h2>} />
         <Route path="*" element={<Navigate to="/404" />} />
       </Routes>
-    </div>
+          </div>
   );
 }
 

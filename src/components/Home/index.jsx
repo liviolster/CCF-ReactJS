@@ -1,7 +1,10 @@
+import ItemListContainer from "../ItemListContainer";
+
 const Home = () => {
     return (
       <div>
-        <h2>Bienvenidos a Café Cienfuegos!</h2>
+      <ItemListContainer greeting="Bienvenido a Café Cienfuegos!"/>
+
       </div>
     );
   };

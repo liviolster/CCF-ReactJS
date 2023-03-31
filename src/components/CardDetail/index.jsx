@@ -8,9 +8,9 @@ const CardDetail = () => {
 
   const getProducto = async () => {
     try {
-      const response = await fetch(`./productos.json${id}`);
+      const response = await fetch('../productos.json');
       const data = await response.json();
-      setProducto(data);
+      setProducto(data.find((item)=> item.id === parseInt(id)));
       setLoading(false);
     } catch (error) {
       setProducto(null);
@@ -32,7 +32,7 @@ const CardDetail = () => {
   return (
     <div>
       <h3>{producto.title}</h3>
-      <img src={producto.image} alt={producto.title} width="200" height="250" />
+      <img src={producto.image} alt={producto.title} width="400" />
       <p>{producto.description}</p>
       <p>{producto.ingredients}</p>
     </div>
