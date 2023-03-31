@@ -16,8 +16,8 @@ const Navbar = () => {
       >
         <img src={logo} alt="logo" className={styles.logo} />
       </NavLink>
-      <NavLink to="/category/coffee">Café</NavLink>
-      <NavLink to="/category/chocolate">Chocolate</NavLink>
+      <NavLink to="/category/coffee" style={({ isActive }) => (isActive ? activeStyle : undefined)}>Café</NavLink>
+      <NavLink to="/category/chocolate" style={({ isActive }) => (isActive ? activeStyle : undefined)}>Chocolate</NavLink>
       <NavLink
         to="/sobrenosotros"
         style={({ isActive }) => (isActive ? activeStyle : undefined)}

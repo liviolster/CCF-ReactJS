@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import CardDetail from "./components/CardDetail";
@@ -9,15 +8,7 @@ import SobreNosotros from "./components/SobreNosotros";
 
 
 function App() {
-  const [productos, setProductos] = useState([]);
-
-  useEffect(() => {
-    fetch("./productos.json")
-      .then((response) => response.json())
-      .then((data) => {
-        setProductos(data);
-      });
-  }, []);
+  
 
   return (
     <div>
@@ -25,7 +16,7 @@ function App() {
       <h1>Café Cienfuegos</h1>
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
-        <Route path="/home" element={<ItemListContainer productos={productos} />}  />
+        <Route path="/home" element={<ItemListContainer  />}  />
         <Route path="/productos/:id" element={<CardDetail />} />
         <Route path='/category/:categoryId' element={<ItemListContainer />} />
         <Route path="/sobrenosotros" element={<SobreNosotros />} />
