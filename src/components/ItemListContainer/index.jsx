@@ -1,30 +1,30 @@
-import Card from "../Card";
-import { useParams } from 'react-router-dom';
 import { useEffect, useState } from "react";
+import db from "../../../db/firebase-config";
+import { getDocs, collection, addDoc } from "firebase/firestore";
 
 const ProductList = () => {
-  const [productos, setProductos] = useState([]);
-  const { categoryId } = useParams()
+  const [items, setItems] = useState([])
+  const itemsRef = collection(db, "items")
 
+
+  const getItems = async ()  => {
+    const itemsCollection = await getDocs(itemsRef);
+    const items = itemsCollection.docs.map(doc => ({...doc.data(), id: doc.id}))
+    setItems(items);
+  };
+
+  
   useEffect(() => {
-    fetch("./productos.json")
-      .then((response) => response.json())
-      .then((data) => {
-        if(categoryId){
-          setProductos(data.filter((item)=>item.category === categoryId));
-        }else{
-          setProductos(data);
-        }
-      });
-  }, [categoryId]);
-  console.log("Category: ", categoryId)
+  getItems();
+  },[])
+  
   
 
   return (
     <div>
-      {productos.map((producto) => (
-        <Card key={producto.id} producto={producto} />
-      ))}
+     {items.map((item)=>(
+      <h3 key={item.id}>{item.title}</h3>
+     ))}
     </div>
   );
 };

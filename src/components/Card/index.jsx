@@ -12,7 +12,7 @@ const Card = ({ producto }) => {
           width="300"
         />
         <p>{producto.description}</p>
-      </div>
+                      </div>
     </Link>
   );
 };
