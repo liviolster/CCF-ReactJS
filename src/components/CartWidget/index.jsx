@@ -6,6 +6,8 @@ import styles from "./cartWidget.module.css"
 
 
 const CartWidget = () => {
+const {totalProduct} = useCartContext();
+
   const activeStyle = {
     color: "#5B7E73",
   };
@@ -29,7 +31,7 @@ if (cart.length === 0) {
   {
     cart.map(producto => <ItemCart key={producto.id} producto={producto}/>)
   }
-  <h4 className={styles.seguirComprando}>Total: {totalPrice()}</h4>
+  <h4 className={styles.seguirComprando}>Total: ${totalPrice()}</h4>
   </>
 </div>
   )

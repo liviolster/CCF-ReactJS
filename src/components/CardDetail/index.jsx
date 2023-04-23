@@ -17,7 +17,7 @@ const [goToCart, setGoToCart] = useState(false);
 
 const onAdd = (quantity) => {
   setGoToCart(true);
-  addProduct(doc, quantity)
+  addProduct(producto, quantity)
 }
   
   useEffect(()=>{
