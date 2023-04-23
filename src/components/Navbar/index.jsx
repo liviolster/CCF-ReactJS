@@ -1,7 +1,8 @@
 import { NavLink } from "react-router-dom";
 import styles from "./navbar.module.css";
 import  logo  from "../../assets/logo.png"
-import CartWidget from "../CartWidget";
+import { CiShoppingCart } from 'react-icons/ci'
+
 
 const Navbar = () => {
   const activeStyle = {
@@ -18,13 +19,8 @@ const Navbar = () => {
       </NavLink>
       <NavLink to="/category/coffee" style={({ isActive }) => (isActive ? activeStyle : undefined)}>Café</NavLink>
       <NavLink to="/category/chocolate" style={({ isActive }) => (isActive ? activeStyle : undefined)}>Chocolate</NavLink>
-      <NavLink
-        to="/sobrenosotros"
-        style={({ isActive }) => (isActive ? activeStyle : undefined)}
-      >
-        <p>Sobre Nosotros</p>
-      </NavLink>
-      <CartWidget />
+      <NavLink to="/sobrenosotros" style={({ isActive }) => (isActive ? activeStyle : undefined)}> <p>Sobre Nosotros</p></NavLink>
+      <NavLink to="/cart" style={({ isActive }) => (isActive ? activeStyle : undefined)}><CiShoppingCart size={40} /></NavLink>
     </nav>
   )
 }

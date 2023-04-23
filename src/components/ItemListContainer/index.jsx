@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
 import db from "../../../db/firebase-config";
-import { getDocs, collection, addDoc } from "firebase/firestore";
+import { getDocs, collection, addDoc, query, where } from "firebase/firestore";
+import Card from '../Card'
+import { useParams } from "react-router-dom";
+
 
 const ProductList = () => {
   const [items, setItems] = useState([])
-  const itemsRef = collection(db, "items")
+  const {categoryId}=useParams()
+  const itemsRef = categoryId ? query(collection(db, "items"), where("category", "==", categoryId)):collection(db, "items")
 
-
+ 
   const getItems = async ()  => {
     const itemsCollection = await getDocs(itemsRef);
     const items = itemsCollection.docs.map(doc => ({...doc.data(), id: doc.id}))
@@ -16,14 +20,14 @@ const ProductList = () => {
   
   useEffect(() => {
   getItems();
-  },[])
+  },[categoryId])
   
   
 
   return (
     <div>
      {items.map((item)=>(
-      <h3 key={item.id}>{item.title}</h3>
+      <Card key={item.id} producto={item}/>
      ))}
     </div>
   );
