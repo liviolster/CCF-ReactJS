@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+    background-color: #543C29;
+    color: #C4BAA0;
+    height: 70px;
+    align-items: center;
+    }
+
+
+  .logo {
+    width: 100px;
+  }
